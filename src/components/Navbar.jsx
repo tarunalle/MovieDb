@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaBars } from "react-icons/fa";
 import axios from 'axios';
 import Search from './Search';
 import Home from './Home';
+import { useDispatch } from "react-redux";
+import { setPageNo } from "../redux/pageSlice";
 
 
 function Navbar() {
 
+    const dispatch = useDispatch();
     const Api_key = "c45a857c193f6302f2b5061c3b85e743";
 
     const [movieName, setMovieName] = useState("")
@@ -31,7 +34,6 @@ function Navbar() {
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-
     };
 
     return (
@@ -39,9 +41,9 @@ function Navbar() {
             <div className='navbar'>
                 <div className='nav-1'>
                     <h4 className='logo'>MovieDb</h4>
-                    <Link to="/" ><p className='p'>Popular</p></Link>
-                    <Link to="/toprated"><p className='p'>Top Rated</p></Link>
-                    <Link to="/upcoming"><p className='p'>Upcoming</p></Link>
+                    <Link to="/" ><p className='p' onClick={() => dispatch(setPageNo(1))}>Popular</p></Link>
+                    <Link to="/toprated"><p className='p' onClick={() => dispatch(setPageNo(1))}>Top Rated</p></Link>
+                    <Link to="/upcoming"><p className='p' onClick={() => dispatch(setPageNo(1))}>Upcoming</p></Link>
                 </div>
                 <div className='nav-2'>
 
@@ -63,15 +65,11 @@ function Navbar() {
 
             </div >
 
-            {location.pathname === "/search/movieName" && movieName !== "" ? <Search moviedata={movieName} />
-                :
-                location.pathname === "/search/movieName" && movieName === "" && <Home />}
-
             {menuOpen ? (
                 <div className=' media'>
-                    <Link to="/"><p className=' text-blue-200 text-2xl'>Popular</p></Link>
-                    <Link to="/toprated"><p className=' text-blue-200 text-2xl'>Toprated</p></Link>
-                    <Link to="/upcoming"><p className=' text-blue-200 text-2xl'>Upcoming</p></Link>
+                    <Link to="/"><p className=' text-gray-300 text-2xl'>Popular</p></Link>
+                    <Link to="/toprated"><p className=' text-gray-300 text-2xl'>Toprated</p></Link>
+                    <Link to="/upcoming"><p className=' text-gray-300 text-2xl'>Upcoming</p></Link>
                 </div>
             ) : <div></div>}
 

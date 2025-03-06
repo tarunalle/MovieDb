@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Home from './Home'
 
 
 function Search({ moviedata }) {
@@ -10,7 +11,7 @@ function Search({ moviedata }) {
     return (
         <div className='home-container'>
 
-            {
+            {moviedata ?
                 Array.isArray(moviedata) && moviedata?.map((newData, key) => {
                     return (
                         <div key={key} className='home-cards'>
@@ -22,7 +23,8 @@ function Search({ moviedata }) {
                             <p>Rating: {newData.vote_average?.toFixed(1)}</p>
                         </div>
                     )
-                })
+                }) :
+                <Home />
             }
 
 

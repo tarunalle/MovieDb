@@ -11,8 +11,6 @@ function HomePage() {
     const movie_id = useParams()
 
 
-
-
     useEffect(() => {
         async function api() {
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${movie_id.movie_id}?api_key=${Api_key}&language=en-US`)
@@ -32,30 +30,32 @@ function HomePage() {
 
 
     return (
-        <div className=' details-page'>
-            {/* <Link to="/"><p>Back</p></Link> */}
-            <div className='details-container'>
-                <div className='first-div'>
-                    <div className='first-a-div'>
+        <>
+            <div className=' details-page'>
+                {/* <Link to="/"><p>Back</p></Link> */}
+                <div className='details-container'>
+                    <div className='first-div'>
+                        <div className='first-a-div'>
 
-                        <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}></img>
+                            <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}></img>
 
-                        <div className='first-aa-div'>
-                            <h1>{data.original_title}</h1>
-                            <h4 id='h4'>Rating: {rate2}</h4>
-                            <h4>Release date: {data.release_date}</h4>
+                            <div className='first-aa-div'>
+                                <h1>{data.original_title}</h1>
+                                <h4 id='h4'>Rating: {rate2}</h4>
+                                <h4>Release date: {data.release_date}</h4>
+                            </div>
+                        </div>
+                        <div className='first-b-div'>
+
+                            <p>{data.overview}</p>
                         </div>
                     </div>
-                    <div className='first-b-div'>
-
-                        <p>{data.overview}</p>
+                    <div className='second-div'>
+                        <img className='backdrop-img' src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}></img>
                     </div>
                 </div>
-                <div className='second-div'>
-                    <img className='backdrop-img' src={`https://image.tmdb.org/t/p/w500${data.backdrop_path}`}></img>
-                </div>
             </div>
-        </div>
+        </>
     )
 }
 
