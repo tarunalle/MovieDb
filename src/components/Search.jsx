@@ -23,8 +23,7 @@ function Search({ moviedata }) {
                             <p>Rating: {newData.vote_average?.toFixed(1)}</p>
                         </div>
                     )
-                }) :
-                <Home />
+                }) : <Home />
             }
 
 

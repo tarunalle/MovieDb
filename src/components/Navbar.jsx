@@ -65,6 +65,10 @@ function Navbar() {
 
             </div >
 
+            {location.pathname === "/search/movieName" && movieName !== "" ? <Search moviedata={movieName} />
+                :
+                location.pathname === "/search/movieName" && movieName === "" && <Home />}
+
             {menuOpen ? (
                 <div className=' media'>
                     <Link to="/"><p className=' text-gray-300 text-2xl'>Popular</p></Link>

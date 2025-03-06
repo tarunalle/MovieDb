@@ -31,6 +31,7 @@ function HomePage() {
 
     return (
         <>
+
             <div className=' details-page'>
                 {/* <Link to="/"><p>Back</p></Link> */}
                 <div className='details-container'>
